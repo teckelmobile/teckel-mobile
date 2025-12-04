@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team Teckel - Équipe officielle participant à Course en Cours 2025. Découvrez notre projet, notre voiture, notre équipe et nos sponsors.">
+    <title>Team Teckel | Course en Cours 2025</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Team Teckel | Course en Cours 2025">
+    <meta property="og:description" content="Découvrez notre projet, notre voiture, notre équipe et nos sponsors.">
+    <meta property="og:image" content="URL_d_une_image_représentative">
+    <meta property="og:url" content="URL_de_votre_site">
+    <meta property="og:type" content="website">
+    <style>
+        :root {
+            --primary: #005792;
+            --primary-dark: #4a90e2;
+            --secondary: #00bcd4;
+            --secondary-dark: #50c8ff;
+            --accent: #ff6b6b;
+            --accent-dark: #ff7b7b;
+            --dark: #2c3e50;
+            --dark-text: #2c3e50;
+            --light: #f9f9f9;
+            --light-text: #f9f9f9;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --text: #2c3e50;
+            --text-light: #f9f9f9;
+            --bg: #f9f9f9;
+            --bg-dark: #1a1a2e;
+            --card-bg: #ffffff;
+            --card-bg-dark: #16213e;
+            --border: rgba(0, 0, 0, 0.05);
+            --border-dark: rgba(255, 255, 255, 0.05);
+        }
+        [data-theme="dark"] {
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --accent: var(--accent-dark);
+            --dark: var(--light-text);
+            --light: var(--bg-dark);
+            --text: var(--light-text);
+            --bg: var(--bg-dark);
+            --card-bg: var(--card-bg-dark);
+            --border: var(--border-dark);
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* --- Navigation --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: var(--transition);
+        }
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+        .nav-links a.active {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        /* --- Boutons Navbar --- */
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .lang-toggle, .theme-toggle {
+            background: var(--primary);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        .lang-toggle:hover, .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+        .lang-text {
+            font-size: 0.9rem;
+        }
+        /* --- Hero --- */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #003d5c 100%);
+            color: var(--light-text);
+            padding: 8rem 1rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-tagline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- Sections --- */
+        .section {
+            padding: 6rem 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        [data-theme="dark"] .section-subtitle {
+            color: #aaa;
+        }
+        /* --- Team --- */
+        .team-swiper {
+            width: 100%;
+            padding-bottom: 60px;
+            position: relative;
+        }
+        .member-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 0;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+            transform: translateY(0);
+            border: 1px solid var(--border);
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        .member-card .front,
+        .member-card .back {
+            backface-visibility: hidden;
+            transition: var(--transition);
+            border-radius: var(--radius);
+            padding: 2.5rem 1.5rem;
+        }
+        .member-card .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            color: var(--light-text);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .member-card:hover .front {
+            transform: rotateY(180deg);
+        }
+        .member-card:hover .back {
+            transform: rotateY(0deg);
+        }
+        .member-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 6px solid var(--secondary);
+            box-shadow: 0 0 0 10px rgba(0, 188, 212, 0.1);
+            transition: var(--transition);
+        }
+        .member-card:hover .member-photo {
+            border-color: var(--accent);
+            transform: scale(1.06);
+            box-shadow: 0 0 0 12px rgba(255, 107, 107, 0.15);
+        }
+        .member-card h3 {
+            margin: 0.8rem 0 0.4rem;
+            font-size: 1.6rem;
+            color: var(--text);
+        }
+        .member-card .back h3 {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        .member-card .role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        .member-card .back .role {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 188, 212, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--light-text);
+            transform: translateY(-4px);
+        }
+        /* --- Flèches Swiper --- */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--secondary) !important;
+            background: rgba(255, 255, 255, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+        }
+        [data-theme="dark"] .swiper-button-next,
+        [data-theme="dark"] .swiper-button-prev {
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--secondary-dark) !important;
+        }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--card-bg);
+            transform: scale(1.05);
+        }
+        /* --- Project --- */
+        .project-section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow-sm);
+            margin: 4rem 0;
+        }
+        .project-intro h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .grid-item {
+            padding: 2rem;
+            background: rgba(0, 188, 212, 0.05);
+            border-radius: var(--radius);
+            border-left: 6px solid var(--secondary);
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .grid-item {
+            background: rgba(0, 188, 212, 0.03);
+            border-left-color: var(--secondary-dark);
+        }
+        .grid-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-sm);
+            background: rgba(0, 188, 212, 0.1);
+        }
+        [data-theme="dark"] .grid-item:hover {
+            background: rgba(0, 188, 212, 0.06);
+        }
+        .grid-item h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0 0 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .grid-item i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        .grid-item ul {
+            list-style: none;
+            padding: 0;
+        }
+        .grid-item li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .grid-item li:last-child {
+            border-bottom: none;
+        }
+        .grid-item li i {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        /* --- Gallery --- */
+        .gallery-section {
+            padding: 4rem 0;
+            background: var(--bg);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            aspect-ratio: 16/9;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        /* --- Sponsors --- */
+        .sponsors-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .sponsor-logo {
+            width: 200px;
+            height: 120px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            cursor: default;
+        }
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        /* --- Contact Form --- */
+        .contact-section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2rem;
+            box-shadow: var(--shadow-sm);
+            margin: 4rem 0;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--card-bg);
+            color: var(--text);
+        }
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea {
+            border-color: #444;
+            background: #2a2a3a;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.15);
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--light-text);
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+            gap: 0.7rem;
+        }
+        .submit-btn:hover {
+            background: #e65a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+        .form-success {
+            text-align: center;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        /* --- FAQ --- */
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: var(--light-text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .faq-question:hover {
+            background: #004578;
+        }
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--light-text);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+            gap: 0.7rem;
+        }
+        .btn:hover {
+            background: #e65a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+        }
+        .btn-primary {
+            background: var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 87, 146, 0.2);
+        }
+        .btn-primary:hover {
+            background: #004578;
+            box-shadow: 0 6px 20px rgba(0, 87, 146, 0.3);
+        }
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #003d5c 100%);
+            color: var(--light-text);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: var(--secondary);
+        }
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .social-footer a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            transition: var(--transition);
+        }
+        .social-footer a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        /* --- Scroll to Top --- */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--accent);
+            color: var(--light-text);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+            z-index: 999;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-buttons {
+                margin-left: auto;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-sm);
+                transform: translateX(-100%);
+                transition: var(--transition);
+            }
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .hero {
+                padding: 5rem 1rem 4rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .sponsors-grid {
+                gap: 2rem;
+            }
+            .sponsor-logo {
+                width: 160px;
+                height: 100px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .member-photo {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#home" class="nav-logo">
+                <i class="fas fa-flag-checkered"></i>
+                <span>Team Teckel</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-buttons">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="lang-toggle" id="langToggle">
+                    <span class="lang-text">EN</span>
+                </button>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#team-section" class="nav-link">Équipe</a></li>
+                <li><a href="#project-details" class="nav-link">Projet</a></li>
+                <li><a href="#gallery-section" class="nav-link">Galerie</a></li>
+                <li><a href="#sponsors-section" class="nav-link">Sponsors</a></li>
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Hero -->
+    <header id="home" class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <div class="hero-tagline">
+                <i class="fas fa-flag-checkered"></i>
+                <span>Team Teckel | Course en Cours 2025</span>
+            </div>
+            <h1>L'ingénierie prend la piste</h1>
+            <p>Une équipe de jeunes ingénieux passionnés, repoussant les limites de la course miniature. Découvrez notre aventure vers la finale nationale et notre vision de l'innovation technique.</p>
+            <div class="hero-buttons">
+                <a href="#project-details" class="btn">Découvrir le Challenge <i class="fas fa-arrow-down"></i></a>
+                <a href="Présentation sponsors.pdf" class="btn btn-primary" download>
+                    <i class="fas fa-file-pdf"></i> Dossier Sponsors
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Équipe -->
+    <section id="team-section" class="section">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <p class="section-subtitle">Rencontrez les membres talentueux de Team Teckel, chacun apportant une expertise unique pour mener à bien notre projet.</p>
+            <div class="swiper team-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="member-card">
+                            <div class="front">
+                                <img src="Raph.jpg" alt="Raphaël Lépine" class="member-photo" loading="lazy">
+                                <h3>Raphaël Lépine</h3>
+                                <p class="role">Chef de projet & Marketing</p>
+                                <div class="social-links">
+                                    
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3>Raphaël Lépine</h3>
+                                <p class="role">Chef de projet & Marketing</p>
+                                <p>Passionné par la gestion de projet et la communication, je m'occupe de la coordination d'équipe et de la recherche de sponsors.</p>
+                                <p>"L'innovation naît de la collaboration et de la persévérance."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="member-card">
+                            <div class="front">
+                                <img src="paul.jpg" alt="Paul Méchineau" class="member-photo" loading="lazy">
+                                <h3>Paul Méchineau</h3>
+                                <p class="role">Responsable Style & Design (CAO)</p>
+                                <div class="social-links">
+                                  </a>
+                                  
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3>Paul Méchineau</h3>
+                                <p class="role">Responsable Style & Design (CAO)</p>
+                                <p>Spécialiste de la modélisation 3D et du design, je conçois la voiture pour allier esthétique et performance.</p>
+                                <p>"Le design, c'est l'équilibre entre forme et fonction."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="member-card">
+                            <div class="front">
+                                <img src="elijah.jpg" alt="Elijah Gourdon" class="member-photo" loading="lazy">
+                                <h3>Elijah Gourdon</h3>
+                                <p class="role">Ingénieur Système Numérique (ISN)</p>
+                                <div class="social-links">
+                               </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3>Elijah Gourdon</h3>
+                                <p class="role">Ingénieur Système Numérique (ISN)</p>
+                                <p>Je développe les systèmes embarqués et l'électronique pour optimiser les performances de notre voiture.</p>
+                                <p>"La technologie est au service de l'innovation."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="member-card">
+                            <div class="front">
+                                <img src="mael.jpg" alt="Maël Ouvrard" class="member-photo" loading="lazy">
+                                <h3>Maël Ouvrard</h3>
+                                <p class="role">Ingénieur Fabrication & Essais</p>
+                                <div class="social-links">
+                                  </a>
+                                    
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3>Maël Ouvrard</h3>
+                                <p class="role">Ingénieur Fabrication & Essais</p>
+                                <p>Je m'occupe de la fabrication et des tests pour garantir la fiabilité de notre voiture en compétition.</p>
+                                <p>"La pratique est la clé de la réussite."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="member-card">
+                            <div class="front">
+                                <img src="lalie.jpg" alt="Lalie Mathely" class="member-photo" loading="lazy">
+                                <h3>Lalie Mathely</h3>
+                                <p class="role">Ingénieur Conception (Simulations)</p>
+                                <div class="social-links">
+                                    
+                                    
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h3>Lalie Mathely</h3>
+                                <p class="role">Ingénieur Conception (Simulations)</p>
+                                <p>Je réalise des simulations pour optimiser la structure et les performances de notre voiture.</p>
+                                <p>"Les simulations permettent de prévoir pour mieux innover."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+    <!-- Galerie -->
+    <section id="gallery-section" class="section gallery-section">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Découvrez les étapes de notre projet, de la conception à la compétition.</p>
+            <div class="gallery-grid">
+                <a href="Raph.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="Raph.jpg" alt="Raphaël en action" loading="lazy">
+                </a>
+                <a href="paul.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="paul.jpg" alt="Paul et la CAO" loading="lazy">
+                </a>
+                <a href="elijah.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="elijah.jpg" alt="Elijah et l'électronique" loading="lazy">
+                </a>
+                <a href="mael.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="mael.jpg" alt="Maël en atelier" loading="lazy">
+                </a>
+                <a href="lalie.jpg" data-lightbox="gallery" class="gallery-item">
+                    <img src="lalie.jpg" alt="Lalie et les simulations" loading="lazy">
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Projet -->
+    <section id="project-details" class="section">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="section-title">Le Challenge Course en Cours</h2>
+                <p class="section-subtitle">Un projet pédagogique complet où nous concevons, fabriquons et pilotons une voiture miniature, tout en développant des compétences en gestion de projet, communication et innovation.</p>
+                <div class="project-grid">
+                    <article class="grid-item">
+                        <h3><i class="fas fa-drafting-compass"></i> Piliers de l'Évaluation</h3>
+                        <ul>
+                            <li><i class="fas fa-percent"></i> <strong>Performance en course (20%)</strong></li>
+                            <li><i class="fas fa-book-open"></i> <strong>Rapport Technique (30%)</strong></li>
+                            <li><i class="fas fa-laptop-code"></i> <strong>Design & Communication (25%)</strong></li>
+                            <li><i class="fas fa-hands-helping"></i> <strong>Sponsoring & Budget (25%)</strong></li>
+                        </ul>
+                    </article>
+                    <article class="grid-item">
+                        <h3><i class="fas fa-cogs"></i> Notre Approche Technique</h3>
+                        <p>Nous utilisons des outils de modélisation 3D (comme SolidWorks) et des simulations par éléments finis pour optimiser la structure de notre voiture. Notre objectif : allier légèreté, rigidité et performance.</p>
+                    </article>
+                    <article class="grid-item">
+                        <h3><i class="fas fa-calendar-alt"></i> Calendrier 2025</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> Locales (Angers): 9 & 30 avril</li>
+                            <li><i class="fas fa-arrow-alt-circle-right"></i> Régionale: 20 mai</li>
+                            <li><i class="fas fa-medal"></i> Nationale (Paris): 27 mai</li>
+                        </ul>
+                    </article>
+                    <article class="grid-item">
+                        <h3><i class="fas fa-rocket"></i> Impact Pédagogique</h3>
+                        <p>Ce projet nous permet de développer des compétences clés : gestion de projet, travail d'équipe, résolution de problèmes techniques et communication avec des partenaires professionnels.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sponsors -->
+    <section id="sponsors-section" class="section">
+        <div class="container">
+            <h2 class="section-title">Nos Partenaires</h2>
+            <p class="section-subtitle">Un immense merci à nos sponsors pour leur soutien et leur confiance. Leur contribution est essentielle pour concrétiser notre projet.</p>
+            <div class="sponsors-grid">
+               <a href="https://www.bar-lentrepotes.fr/" title="Ceci est un lien image HTML">
+	<img src="l'entrepotes.jpg" alt="Bar L'Entrepôts" class="sponsor-logo" loading="lazy">
+                <a href="https://www.go-impression.fr/" title="Ceci est un lien image HTML">
+	<img src="go impression.jpg" alt="go impression" class="sponsor-logo" loading="lazy">
+            </div>
+            <div style="text-align: center;">
+                <a href="#contact-section" class="btn btn-primary">
+                    <i class="fas fa-donate"></i> Devenir Sponsor
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact-section" class="section">
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="section-title">Nous Contacter</h2>
+                <p class="section-subtitle">Une question, une proposition de partenariat ou simplement envie d'en savoir plus ? N'hésitez pas à nous écrire !</p>
+                <form class="contact-form" action="https://formspree.io/f/mkglzojy" method="POST" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                    <p class="form-success" id="formSuccess">Message envoyé avec succès ! Nous vous répondrons rapidement.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ -->
+    <section id="faq-section" class="section faq-section">
+        <div class="container">
+            <h2 class="section-title">Questions Fréquentes</h2>
+            <p class="section-subtitle">Retrouvez ici les réponses aux questions les plus posées sur notre projet et notre participation à Course en Cours.</p>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Qu'est-ce que Course en Cours ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Course en Cours est un dispositif pédagogique qui propose aux élèves de collège et lycée de créer une écurie de course miniature, de la conception à la fabrication, en passant par la recherche de sponsors et la communication.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment pouvez-vous nous soutenir ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Vous pouvez nous soutenir en devenant sponsor (financement, matériel, impression 3D, etc.), en partageant notre projet sur les réseaux sociaux, ou en nous suivant lors des compétitions !</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Quels sont vos objectifs pour 2025 ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Nos objectifs sont de participer activement aux compétitions locales, régionales et nationales, tout en développant nos compétences techniques et en nouant des partenariats durables avec des entreprises locales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Team Teckel. Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;">Propulsé par la passion de l'ingénierie et de l'innovation.</p>
+            <div class="footer-links">
+                <a href="mailto:teckel.mobile@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="convention  SPONSOR.pdf" download><i class="fas fa-file-pdf"></i> Dossier Sponsors</a>
+            </div>
+            <div class="social-footer">
+              
+                <a href="https://www.instagram.com/teckel.mobile/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        // Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+        // Swiper
+        var swiper = new Swiper('.team-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            }
+        });
+        // Mobile Menu
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+        // Scroll to Top
+        const scrollTopButton = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
+        });
+        scrollTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Contact Form
+        const form = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    form.reset();
+                    formSuccess.style.display = 'block';
+                    setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
+                } else {
+                    alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+                }
+            } catch (error) {
+                alert('Erreur réseau. Veuillez vérifier votre connexion.');
+            }
+        });
+        // Highlight active section on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        // Gestion du basculement de langue
+        const langToggle = document.getElementById('langToggle');
+        let isEnglish = false;
+        // Dictionnaire de traduction
+        const translations = {
+            fr: {
+                heroTitle: "L'ingénierie prend la piste",
+                heroSubtitle: "Une équipe de jeunes ingénieurs passionnés, repoussant les limites de la course miniature. Découvrez notre aventure vers la finale nationale et notre vision de l'innovation technique.",
+                discoverBtn: "Découvrir le Challenge",
+                downloadBtn: "Dossier Sponsors",
+                teamTitle: "Notre Équipe",
+                teamSubtitle: "Rencontrez les membres talentueux de Team Teckel, chacun apportant une expertise unique pour mener à bien notre projet.",
+                projectTitle: "Le Challenge Course en Cours",
+                projectSubtitle: "Un projet pédagogique complet où nous concevons, fabriquons et pilotons une voiture miniature, tout en développant des compétences en gestion de projet, communication et innovation.",
+                galleryTitle: "Galerie",
+                gallerySubtitle: "Découvrez les étapes de notre projet, de la conception à la compétition.",
+                sponsorsTitle: "Nos Partenaires",
+                sponsorsSubtitle: "Un immense merci à nos sponsors pour leur soutien et leur confiance. Leur contribution est essentielle pour concrétiser notre projet.",
+                contactTitle: "Nous Contacter",
+                contactSubtitle: "Une question, une proposition de partenariat ou simplement envie d'en savoir plus ? N'hésitez pas à nous écrire !",
+                faqTitle: "Questions Fréquentes",
+                faqSubtitle: "Retrouvez ici les réponses aux questions les plus posées sur notre projet et notre participation à Course en Cours.",
+                becomeSponsorBtn: "Devenir Sponsor",
+                sendBtn: "Envoyer",
+                successMessage: "Message envoyé avec succès ! Nous vous répondrons rapidement.",
+                faq1: "Qu'est-ce que Course en Cours ?",
+                faq1Answer: "Course en Cours est un dispositif pédagogique qui propose aux élèves de collège et lycée de créer une écurie de course miniature, de la conception à la fabrication, en passant par la recherche de sponsors et la communication.",
+                faq2: "Comment pouvez-vous nous soutenir ?",
+                faq2Answer: "Vous pouvez nous soutenir en devenant sponsor (financement, matériel, impression 3D, etc.), en partageant notre projet sur les réseaux sociaux, ou en nous suivant lors des compétitions !",
+                faq3: "Quels sont vos objectifs pour 2025 ?",
+                faq3Answer: "Nos objectifs sont de participer activement aux compétitions locales, régionales et nationales, tout en développant nos compétences techniques et en nouant des partenariats durables avec des entreprises locales.",
+                pillarsTitle: "Piliers de l'Évaluation",
+                approachTitle: "Notre Approche Technique",
+                calendarTitle: "Calendrier 2025",
+                impactTitle: "Impact Pédagogique",
+                footerLinks: ["Équipe", "Sponsors", "Dossier Sponsors"],
+                navLinks: ["Équipe", "Projet", "Galerie", "Sponsors", "Contact", "FAQ"]
+            },
+            en: {
+                heroTitle: "Engineering Takes the Track",
+                heroSubtitle: "A team of passionate young engineers, pushing the limits of miniature racing. Discover our journey to the national final and our vision of technical innovation.",
+                discoverBtn: "Discover the Challenge",
+                downloadBtn: "Sponsors Dossier",
+                teamTitle: "Our Team",
+                teamSubtitle: "Meet the talented members of Team Teckel, each bringing unique expertise to successfully complete our project.",
+                projectTitle: "The Course en Cours Challenge",
+                projectSubtitle: "A comprehensive educational project where we design, manufacture and race a miniature car, while developing skills in project management, communication and innovation.",
+                galleryTitle: "Gallery",
+                gallerySubtitle: "Discover the stages of our project, from design to competition.",
+                sponsorsTitle: "Our Partners",
+                sponsorsSubtitle: "A huge thank you to our sponsors for their support and trust. Their contribution is essential to make our project a reality.",
+                contactTitle: "Contact Us",
+                contactSubtitle: "A question, a partnership proposal or just want to know more? Feel free to write to us!",
+                faqTitle: "Frequently Asked Questions",
+                faqSubtitle: "Find here the answers to the most frequently asked questions about our project and our participation in Course en Cours.",
+                becomeSponsorBtn: "Become a Sponsor",
+                sendBtn: "Send",
+                successMessage: "Message sent successfully! We will get back to you soon.",
+                faq1: "What is Course en Cours?",
+                faq1Answer: "Course en Cours is an educational program that invites middle and high school students to create a miniature racing team, from design to manufacturing, including sponsor research and communication.",
+                faq2: "How can you support us?",
+                faq2Answer: "You can support us by becoming a sponsor (funding, materials, 3D printing, etc.), by sharing our project on social media, or by following us during competitions!",
+                faq3: "What are your goals for 2025?",
+                faq3Answer: "Our goals are to actively participate in local, regional and national competitions, while developing our technical skills and building lasting partnerships with local businesses.",
+                pillarsTitle: "Evaluation Pillars",
+                approachTitle: "Our Technical Approach",
+                calendarTitle: "2025 Calendar",
+                impactTitle: "Educational Impact",
+                footerLinks: ["Team", "Sponsors", "Sponsors Dossier"],
+                navLinks: ["Team", "Project", "Gallery", "Sponsors", "Contact", "FAQ"]
+            }
+        };
+        // Fonction pour mettre à jour le texte
+        function updateText() {
+            const lang = isEnglish ? 'en' : 'fr';
+            const t = translations[lang];
+            // Hero
+            document.querySelector('.hero h1').textContent = t.heroTitle;
+            document.querySelector('.hero p').textContent = t.heroSubtitle;
+            document.querySelector('.hero-buttons .btn').innerHTML = `${t.discoverBtn} <i class="fas fa-arrow-down"></i>`;
+            document.querySelector('.hero-buttons .btn-primary').innerHTML = `<i class="fas fa-file-pdf"></i> ${t.downloadBtn}`;
+            // Équipe
+            document.querySelector('#team-section .section-title').textContent = t.teamTitle;
+            document.querySelector('#team-section .section-subtitle').textContent = t.teamSubtitle;
+            // Galerie
+            document.querySelector('#gallery-section .section-title').textContent = t.galleryTitle;
+            document.querySelector('#gallery-section .section-subtitle').textContent = t.gallerySubtitle;
+            // Projet
+            document.querySelector('#project-details .section-title').textContent = t.projectTitle;
+            document.querySelector('#project-details .section-subtitle').textContent = t.projectSubtitle;
+            document.querySelector('.grid-item:nth-child(1) h3').innerHTML = `<i class="fas fa-drafting-compass"></i> ${t.pillarsTitle}`;
+            document.querySelector('.grid-item:nth-child(2) h3').innerHTML = `<i class="fas fa-cogs"></i> ${t.approachTitle}`;
+            document.querySelector('.grid-item:nth-child(3) h3').innerHTML = `<i class="fas fa-calendar-alt"></i> ${t.calendarTitle}`;
+            document.querySelector('.grid-item:nth-child(4) h3').innerHTML = `<i class="fas fa-rocket"></i> ${t.impactTitle}`;
+            // Sponsors
+            document.querySelector('#sponsors-section .section-title').textContent = t.sponsorsTitle;
+            document.querySelector('#sponsors-section .section-subtitle').textContent = t.sponsorsSubtitle;
+            document.querySelector('#sponsors-section .btn-primary').innerHTML = `<i class="fas fa-donate"></i> ${t.becomeSponsorBtn}`;
+            // Contact
+            document.querySelector('#contact-section .section-title').textContent = t.contactTitle;
+            document.querySelector('#contact-section .section-subtitle').textContent = t.contactSubtitle;
+            document.querySelector('.submit-btn').innerHTML = `<i class="fas fa-paper-plane"></i> ${t.sendBtn}`;
+            document.getElementById('formSuccess').textContent = t.successMessage;
+            // FAQ
+            document.querySelector('#faq-section .section-title').textContent = t.faqTitle;
+            document.querySelector('#faq-section .section-subtitle').textContent = t.faqSubtitle;
+            document.querySelectorAll('.faq-question span')[0].textContent = t.faq1;
+            document.querySelectorAll('.faq-answer p')[0].textContent = t.faq1Answer;
+            document.querySelectorAll('.faq-question span')[1].textContent = t.faq2;
+            document.querySelectorAll('.faq-answer p')[1].textContent = t.faq2Answer;
+            document.querySelectorAll('.faq-question span')[2].textContent = t.faq3;
+            document.querySelectorAll('.faq-answer p')[2].textContent = t.faq3Answer;
+            // Footer
+            document.querySelectorAll('.footer-links a')[0].textContent = t.footerLinks[0];
+            document.querySelectorAll('.footer-links a')[1].textContent = t.footerLinks[1];
+            document.querySelectorAll('.footer-links a')[2].textContent = t.footerLinks[2];
+            // Nav
+            document.querySelectorAll('.nav-links a')[0].textContent = t.navLinks[0];
+            document.querySelectorAll('.nav-links a')[1].textContent = t.navLinks[1];
+            document.querySelectorAll('.nav-links a')[2].textContent = t.navLinks[2];
+            document.querySelectorAll('.nav-links a')[3].textContent = t.navLinks[3];
+            document.querySelectorAll('.nav-links a')[4].textContent = t.navLinks[4];
+            document.querySelectorAll('.nav-links a')[5].textContent = t.navLinks[5];
+            // Mise à jour du texte du bouton de langue
+            document.querySelector('.lang-text').textContent = isEnglish ? 'FR' : 'EN';
+        }
+        // Écouteur d'événement pour le bouton de langue
+        langToggle.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            updateText();
+        });
+        // Toggle Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? '' : 'dark');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+    </script>
+</body>
+</html>
